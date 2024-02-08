@@ -28,3 +28,28 @@ function updateClock() {
 }
 
 updateClock();
+
+const background = document.querySelector('body');
+
+function setBackground() {
+    const currentTime = new Date().getHours();
+
+    if (currentTime < 10) {
+        // morning
+        background.style.backgroundImage = "url('images/morning.jpg')";
+    } else if (currentTime < 18) {
+        // afertnoon
+        background.style.backgroundImage = "url('images/afternoon.jpg')";
+    } else if (18 >currentTime < 21) {
+      // sunset
+      background.style.backgroundImage = "url('images/sunset.jpg')";
+    }else {
+        // evening
+        background.style.backgroundImage = "url('images/night.jpg')";
+    }
+}
+
+setBackground(); //set inital bachground
+
+// update background every hour
+setInterval(setBackground, 3600000); // 3600000 milisec = 1 hour
